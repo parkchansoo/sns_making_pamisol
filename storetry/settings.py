@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_jwt',
     'stores',
     'comments',
-    'menus',
-    'auth_app',
+    'menus'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'testmiddleware.SimpleMiddleware'
 ]
 
 ROOT_URLCONF = 'storetry.urls'
@@ -83,14 +81,11 @@ WSGI_APPLICATION = 'storetry.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pamisol_demo',
-        'USER': 'pamisol',
-        'PASSWORD': 'q1w2e3r4',
-        'HOST': '192.168.0.9',
-        'PORT': "3306"
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -129,19 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        'auth_app.backends.JWTAuthentication',
-
-    ),
-    "DEFAULT_PERMISSION_CLASSES": (
-        'auth_app.backends.JWTAuthentication',
-        'rest_framework.permissions.IsAuthenticated',
-    )
-}
-
-AUTH_SECRET_KEY = 'n=x+n#(z8t@v&w$t(!!5c-hve$4vhkkyom4)dkpypc#^(i571-'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
